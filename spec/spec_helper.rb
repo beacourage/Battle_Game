@@ -14,9 +14,18 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # rspec-expectations config goes here. You can use an alternate
-  # assertion/expectation library such as wrong or the stdlib/minitest
-  # assertions if you prefer.
+
+  ENV['RACK_ENV'] = 'test'
+  #requiring Sinatra App File 
+  require File.join(File.dirname(__FILE__), '..', 'app.rb')
+
+  require 'capybara'
+  require 'capybara/rspec'
+  require 'rspec'
+
+  # telling Capybara about our app class
+  Capybara.app = Battle
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
