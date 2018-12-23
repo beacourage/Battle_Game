@@ -16,12 +16,13 @@
 RSpec.configure do |config|
 
   ENV['RACK_ENV'] = 'test'
-  #requiring Sinatra App File 
+  #requiring Sinatra App File
   require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
   require 'capybara'
   require 'capybara/rspec'
   require 'rspec'
+  require 'features/web_helpers'
 
   # telling Capybara about our app class
   Capybara.app = Battle

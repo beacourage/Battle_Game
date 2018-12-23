@@ -15,7 +15,11 @@ class Battle < Sinatra::Base
     session[:player1_name] = params[:player1_name]
     session[:player2_name] = params[:player2_name]
     redirect '/play'
-  end
+   end
+    # #we stored the players names in a session instead
+    # of assigning them to instance variables
+    # we enabled a session TO STORE INFO BETWEEN REQUESTS!
+
 
   get '/play' do
     @player1_name = session[:player1_name]
