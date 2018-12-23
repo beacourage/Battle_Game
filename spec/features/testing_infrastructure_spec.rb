@@ -1,10 +1,7 @@
 
 feature 'Entering names' do
   scenario 'Fill names in form and submit the form' do
-    visit ('/')
-    fill_in :player1_name, with: 'Frank'
-    fill_in :player2_name, with: 'Bea'
-    click_button 'Submit'
+    sign_in_and_play
     expect(page).to have_content 'Frank vs. Bea'
   end
 end
@@ -15,10 +12,19 @@ end
 
 feature 'See Hit Points' do
   scenario "Viewing player 2's hit points" do
-    visit ('/')
-    fill_in :player1_name, with: 'Frank'
-    fill_in :player2_name, with: 'Bea'
-    click_button 'Submit'
+    sign_in_and_play
     expect(page).to have_content 'Bea: 50 points'
+  end
+end
+
+# As Player 1,
+# So I can win a game of Battle,
+# I want to attack Player 2, and I want to get a confirmation
+
+feature 'Win battle game' do
+  scenario "Attack player 2, get confirmation" do
+    sign_in_and_play
+    click_link 'Attack'
+    expect(page).to have_content 'Frank has attacked Bea'
   end
 end
