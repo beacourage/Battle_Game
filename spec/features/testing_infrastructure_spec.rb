@@ -24,7 +24,7 @@ end
 feature 'Win battle game' do
   scenario "Attack player 2, get confirmation" do
     sign_in_and_play
-    click_link 'Attack'
+    click_button 'Attack'
     expect(page).to have_content 'Frank has attacked Bea'
   end
 end
