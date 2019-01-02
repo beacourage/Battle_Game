@@ -28,3 +28,17 @@ feature 'Win battle game' do
     expect(page).to have_content 'Frank has attacked Bea'
   end
 end
+
+# As Player 1,
+# So I can start to win a game of Battle,
+# I want my attack to reduce Player 2's HP by 10
+#
+# feature 'Attacking' do
+#   scenario 'reduce Player 2 HP by 10' do
+#     sign_in_and_play
+#     click_button 'Attack'
+#     click_link 'OK'
+#     expect(page).not_to have_content 'Bea: 60 points'
+#     expect(page).to have_content 'B: 50 points'
+#   end
+# end
