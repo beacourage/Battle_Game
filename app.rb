@@ -1,8 +1,9 @@
-require 'sinatra/base'
 require_relative './lib/player'
+require 'sinatra/base'
 
 class Battle < Sinatra::Base
-  enable :sessions
+
+enable :sessions
 
 # Create a get '/' route that renders aindex.erb view with a form
   get '/' do
@@ -14,6 +15,8 @@ class Battle < Sinatra::Base
     $player2 = Player.new(params[:player2_name])
     redirect '/play'
    end
+
+   # $player2 = Player.new(params[:player2_name])
     # #we stored the players names in a session instead
     # of assigning them to instance variables
     # we enabled a session TO STORE INFO BETWEEN REQUESTS!
@@ -23,19 +26,21 @@ class Battle < Sinatra::Base
     # instance in a global vairable
 
   get '/play' do
-    @player1_name = $player1.name
-    @player2_name = $player2.name
+    @player1_name = $player1
+    @player2_name = $player2
     erb :play
   end
 
 
   get '/attack' do
-    @player1_name = $player1.name
-    @player2_name = $player2.name
+    @player1_name = $player1
+    @player2_name = $player2
+    @player1_name.attack(@player2_name)
     erb :attack
   end
 
 run! if app_file == $0
+
 end
 
 
